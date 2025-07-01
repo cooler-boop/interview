@@ -1,0 +1,73 @@
+{
+  "name": "ai-interview-assistant",
+  "version": "2.1.0",
+  "description": "AI-powered interview preparation assistant with comprehensive features",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server.js",
+    "test": "vitest",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
+    "optimize": "node scripts/optimize.js",
+    "analyze": "npm run build && npx vite-bundle-analyzer dist/stats.html"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1",
+    "axios": "^1.6.0",
+    "lucide-react": "^0.321.0",
+    "framer-motion": "^10.16.0",
+    "react-speech-kit": "^3.0.1",
+    "react-markdown": "^8.0.5",
+    "recharts": "^2.8.0",
+    "react-dropzone": "^14.2.3",
+    "react-hot-toast": "^2.4.1",
+    "zustand": "^4.4.7",
+    "date-fns": "^2.30.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.0.0",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-tabs": "^1.0.4",
+    "@radix-ui/react-progress": "^1.0.3",
+    "@radix-ui/react-toast": "^1.1.5",
+    "linkedin-jobs-api": "^1.0.0",
+    "resume-parser": "^2.0.0",
+    "pdf-parse": "^1.1.1",
+    "mammoth": "^1.6.0",
+    "node-nlp": "^4.27.0",
+    "multer": "^1.4.5-lts.1",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.0",
+    "vite": "^5.0.8",
+    "vitest": "^1.0.4",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "tailwindcss": "^3.3.6",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "vite-bundle-analyzer": "^0.7.0",
+    "@types/multer": "^1.4.11",
+    "@types/express": "^4.17.21"
+  },
+  "overrides": {
+    "react-speech-kit": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
+  }
+}
