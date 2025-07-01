@@ -36,7 +36,7 @@
     "@radix-ui/react-progress": "^1.0.3",
     "@radix-ui/react-toast": "^1.1.5",
     "linkedin-jobs-api": "^1.0.0",
-    "resume-parser": "^2.0.0",
+    "resume-parser": "^1.0.0",
     "pdf-parse": "^1.1.1",
     "mammoth": "^1.6.0",
     "node-nlp": "^4.27.0",
