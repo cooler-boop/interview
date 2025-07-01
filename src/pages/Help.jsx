@@ -16,7 +16,10 @@ import {
   ThumbsUp,
   Award,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  Brain,
+  Cpu,
+  Settings
 } from 'lucide-react'
 
 const Help = () => {
@@ -30,6 +33,8 @@ const Help = () => {
     { id: 'interview', name: '面试功能', icon: MessageCircle },
     { id: 'resume', name: '简历分析', icon: FileText },
     { id: 'job-search', name: '职位搜索', icon: Search },
+    { id: 'ai-config', name: 'AI配置', icon: Brain },
+    { id: 'mcp-config', name: 'MCP配置', icon: Cpu },
     { id: 'account', name: '账户管理', icon: HelpCircle }
   ]
   
@@ -121,6 +126,50 @@ const Help = () => {
         id: 'job-4',
         question: '如何提高职位匹配度？',
         answer: '提高职位匹配度的有效方法：\n\n1. **完善简历**：确保简历包含完整的技能、经验和教育信息\n2. **技能关键词**：在简历中使用与目标职位相关的技术关键词\n3. **设置偏好**：在个人中心完善地点、薪资等偏好设置\n4. **针对性调整**：根据特定职位要求调整简历内容\n5. **学习推荐技能**：关注系统推荐的需要提升的技能\n6. **扩展搜索范围**：适当放宽地点、薪资等筛选条件\n7. **定期更新**：保持简历和技能信息的及时更新\n\n系统会根据您的操作和反馈不断优化匹配算法，提供越来越精准的推荐。'
+      }
+    ],
+    'ai-config': [
+      {
+        id: 'ai-1',
+        question: '如何配置AI模型？',
+        answer: '配置AI模型的步骤：\n\n1. 点击页面顶部导航栏中的"AI配置"按钮\n2. 在弹出的配置面板中，选择您想使用的AI提供商（如OpenAI、Claude等）\n3. 输入您的API密钥（如果使用云端模型）\n4. 选择预设模型或输入自定义模型ID\n5. 根据需要调整高级参数（如温度、最大Token数等）\n6. 点击"保存配置"按钮\n\n配置完成后，系统将使用您选择的AI模型进行简历分析、面试评估和职位匹配等功能。'
+      },
+      {
+        id: 'ai-2',
+        question: '支持哪些AI模型？',
+        answer: '我们的系统支持400+种AI模型，包括：\n\n**云端模型**：\n- OpenAI（GPT-4o、GPT-4、GPT-3.5等）\n- Claude（Claude 3.5 Sonnet、Claude 3 Opus等）\n- Google Gemini（Gemini 1.5 Pro、Gemini 1.0等）\n- 国内模型（通义千问、文心一言、智谱GLM等）\n\n**本地模型**：\n- Ollama（Llama 3、Mistral、Mixtral等）\n- LM Studio（支持多种本地模型）\n- Jan AI（支持多种本地模型）\n\n您可以根据自己的需求和API密钥情况选择合适的模型。'
+      },
+      {
+        id: 'ai-3',
+        question: '如何获取API密钥？',
+        answer: '获取不同平台的API密钥的方法：\n\n**OpenAI API密钥**：\n1. 访问 https://platform.openai.com/\n2. 注册或登录您的账户\n3. 点击右上角的个人头像，选择"View API keys"\n4. 点击"Create new secret key"创建新密钥\n\n**Claude API密钥**：\n1. 访问 https://console.anthropic.com/\n2. 注册或登录您的账户\n3. 在控制台中找到"API Keys"部分\n4. 创建新的API密钥\n\n**Google Gemini API密钥**：\n1. 访问 https://ai.google.dev/\n2. 注册或登录您的Google账户\n3. 创建一个新项目并启用Gemini API\n4. 在"凭据"部分创建API密钥\n\n获取API密钥后，将其复制并粘贴到AI配置面板中对应的字段。'
+      },
+      {
+        id: 'ai-4',
+        question: '如何使用本地AI模型？',
+        answer: '使用本地AI模型的步骤：\n\n1. 首先，您需要在本地安装以下工具之一：\n   - Ollama (https://ollama.ai/)\n   - LM Studio (https://lmstudio.ai/)\n   - Jan AI (https://jan.ai/)\n\n2. 安装完成后，下载并运行您想使用的模型\n\n3. 在我们的AI配置面板中，选择对应的本地模型提供商\n\n4. 确保Base URL设置正确（默认值通常无需修改）：\n   - Ollama: http://localhost:11434\n   - LM Studio: http://localhost:1234/v1\n   - Jan AI: http://localhost:1337/v1\n\n5. 选择您已下载的模型\n\n6. 点击"测试连接"确认连接成功\n\n7. 保存配置\n\n使用本地模型的优势是保护隐私和节省API费用，但需要较高的计算资源。'
+      }
+    ],
+    'mcp-config': [
+      {
+        id: 'mcp-1',
+        question: '什么是MCP协议？',
+        answer: 'MCP（Model Context Protocol）是一种增强AI模型上下文理解和工具调用能力的协议。它允许AI模型：\n\n1. **访问外部工具**：如简历分析器、面试评分器等\n2. **使用结构化资源**：如职位数据库、技能知识库等\n3. **应用专业提示模板**：针对不同场景优化AI输出\n\nMCP协议使我们的AI面试助手能够提供更专业、更精准的服务，例如：\n- 更准确的简历分析和匹配\n- 更专业的面试评估和反馈\n- 更个性化的职业规划建议\n\n简而言之，MCP协议是连接AI模型与专业工具和知识库的桥梁，大幅提升了系统的专业能力。'
+      },
+      {
+        id: 'mcp-2',
+        question: '如何配置MCP协议？',
+        answer: '配置MCP协议的步骤：\n\n1. 点击页面顶部导航栏中的"MCP配置"按钮\n\n2. 在弹出的配置面板中，您可以：\n   - **导入配置**：上传JSON格式的MCP配置文件\n   - **查看系统状态**：检查已注册的工具、资源和提示模板\n   - **导出配置**：下载当前MCP配置\n\n3. 如果您是首次使用，可以点击"生成示例"按钮创建一个基础配置\n\n4. 配置文件包含四个主要部分：\n   - **mcpServers**：MCP服务器配置\n   - **tools**：可用工具定义\n   - **resources**：资源配置\n   - **prompts**：提示模板\n\n5. 编辑完成后点击"导入配置"按钮\n\n大多数用户无需修改默认配置，系统已预设了面试相关的工具和提示模板。'
+      },
+      {
+        id: 'mcp-3',
+        question: 'MCP协议有哪些预设工具？',
+        answer: '我们的系统预设了以下MCP工具：\n\n1. **resume_analyzer**：\n   - 分析简历内容，提供匹配度评分和改进建议\n   - 支持多种文件格式和目标岗位分析\n\n2. **interview_scorer**：\n   - 评估面试回答质量，提供评分和反馈\n   - 从多个维度分析回答的优缺点\n\n3. **job_matcher**：\n   - 匹配用户画像与职位要求，计算匹配度\n   - 提供8维度的匹配分析和改进建议\n\n4. **skill_assessor**：\n   - 评估技能水平，生成学习路径建议\n   - 提供个性化的技能提升计划\n\n这些工具协同工作，为用户提供全方位的面试准备和职业发展支持。您可以在MCP配置面板中查看这些工具的详细信息。'
+      },
+      {
+        id: 'mcp-4',
+        question: 'MCP配置出错怎么办？',
+        answer: '如果MCP配置出现问题，您可以尝试以下解决方法：\n\n1. **重置默认配置**：\n   - 在MCP配置面板中点击"生成示例"按钮\n   - 导入生成的示例配置\n\n2. **检查JSON格式**：\n   - 确保配置文件是有效的JSON格式\n   - 使用在线JSON验证工具检查语法错误\n\n3. **检查工具定义**：\n   - 确保工具定义中包含必要的字段（description、inputSchema等）\n   - 验证inputSchema格式是否正确\n\n4. **查看系统状态**：\n   - 切换到"系统状态"标签页查看错误信息\n   - 检查已注册的工具和提示模板\n\n5. **清除浏览器缓存**：\n   - 有时缓存的配置可能导致问题\n   - 清除浏览器缓存后重新登录\n\n如果问题仍然存在，您可以联系我们的技术支持获取帮助。'
       }
     ],
     'account': [
@@ -277,6 +326,8 @@ const Help = () => {
                   {activeCategory === 'interview' && '关于AI模拟面试功能的详细指南和常见问题'}
                   {activeCategory === 'resume' && '简历分析功能的使用方法和技巧'}
                   {activeCategory === 'job-search' && '如何使用企业级职位搜索功能找到理想工作'}
+                  {activeCategory === 'ai-config' && '如何配置和使用AI模型，提升系统性能'}
+                  {activeCategory === 'mcp-config' && '了解MCP协议配置和高级功能'}
                   {activeCategory === 'account' && '账户管理、隐私设置和安全相关的帮助'}
                 </p>
               </div>
@@ -351,6 +402,99 @@ const Help = () => {
               )}
             </div>
             
+            {/* 配置指南 */}
+            {!searchQuery && (activeCategory === 'ai-config' || activeCategory === 'mcp-config') && (
+              <div className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                  {activeCategory === 'ai-config' ? (
+                    <>
+                      <Brain className="w-5 h-5 mr-2 text-purple-600" />
+                      快速配置指南
+                    </>
+                  ) : (
+                    <>
+                      <Cpu className="w-5 h-5 mr-2 text-blue-600" />
+                      MCP配置指南
+                    </>
+                  )}
+                </h3>
+                
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-blue-700 font-medium">1</span>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900">访问配置面板</h4>
+                      <p className="text-sm text-gray-600">
+                        {activeCategory === 'ai-config' 
+                          ? '点击页面顶部导航栏中的"AI配置"按钮或控制台中的AI配置卡片' 
+                          : '点击页面顶部导航栏中的"MCP配置"按钮或控制台中的MCP配置卡片'}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-blue-700 font-medium">2</span>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900">
+                        {activeCategory === 'ai-config' ? '选择AI提供商' : '导入或创建配置'}
+                      </h4>
+                      <p className="text-sm text-gray-600">
+                        {activeCategory === 'ai-config' 
+                          ? '从列表中选择您想使用的AI提供商（如OpenAI、Claude等）' 
+                          : '您可以上传JSON配置文件或点击"生成示例"创建基础配置'}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-blue-700 font-medium">3</span>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900">
+                        {activeCategory === 'ai-config' ? '输入API密钥' : '查看系统状态'}
+                      </h4>
+                      <p className="text-sm text-gray-600">
+                        {activeCategory === 'ai-config' 
+                          ? '如果使用云端模型，需要输入您的API密钥（本地模型无需此步骤）' 
+                          : '切换到"系统状态"标签页，查看已注册的工具、资源和提示模板'}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-blue-700 font-medium">4</span>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900">保存配置</h4>
+                      <p className="text-sm text-gray-600">
+                        {activeCategory === 'ai-config' 
+                          ? '点击"保存配置"按钮完成设置，系统将使用您选择的AI模型' 
+                          : '点击"导入配置"按钮完成设置，系统将使用您的MCP配置'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-6 flex justify-center">
+                  <button 
+                    onClick={() => activeCategory === 'ai-config' ? setShowAIConfig(true) : setShowMCPConfig(true)}
+                    className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex items-center space-x-2"
+                  >
+                    <Settings className="w-5 h-5" />
+                    <span>
+                      {activeCategory === 'ai-config' ? '打开AI配置' : '打开MCP配置'}
+                    </span>
+                  </button>
+                </div>
+              </div>
+            )}
+            
             {/* 视频教程 */}
             {!searchQuery && activeCategory === 'getting-started' && (
               <div className="mt-8">
@@ -415,82 +559,6 @@ const Help = () => {
               </div>
             )}
             
-            {/* 相关文档 */}
-            {!searchQuery && (
-              <div className="mt-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                  <FileText className="w-5 h-5 mr-2 text-blue-600" />
-                  相关文档
-                </h3>
-                <div className="grid md:grid-cols-3 gap-4">
-                  {[
-                    {
-                      title: '用户手册',
-                      description: '详细的功能使用说明和最佳实践',
-                      icon: Book
-                    },
-                    {
-                      title: '隐私政策',
-                      description: '了解我们如何保护您的数据和隐私',
-                      icon: HelpCircle
-                    },
-                    {
-                      title: '服务条款',
-                      description: '使用AI面试助手的条款和条件',
-                      icon: FileText
-                    }
-                  ].map((doc, index) => {
-                    const Icon = doc.icon
-                    return (
-                      <a 
-                        key={index}
-                        href="#"
-                        className="bg-white rounded-lg p-4 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all flex items-start space-x-3"
-                      >
-                        <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Icon className="w-5 h-5 text-blue-600" />
-                        </div>
-                        <div>
-                          <h4 className="font-medium text-gray-900 mb-1 flex items-center">
-                            {doc.title}
-                            <ExternalLink className="w-3 h-3 ml-1 text-gray-400" />
-                          </h4>
-                          <p className="text-sm text-gray-600">{doc.description}</p>
-                        </div>
-                      </a>
-                    )
-                  })}
-                </div>
-              </div>
-            )}
-            
-            {/* 常见问题快速链接 */}
-            {!searchQuery && activeCategory === 'getting-started' && (
-              <div className="mt-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">常见问题快速链接</h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
-                    { question: '如何开始AI模拟面试？', category: 'interview', id: 'int-1' },
-                    { question: '如何上传简历进行分析？', category: 'resume', id: 'res-1' },
-                    { question: '如何使用企业级职位搜索功能？', category: 'job-search', id: 'job-1' },
-                    { question: '如何修改个人信息？', category: 'account', id: 'acc-1' }
-                  ].map((item, index) => (
-                    <button
-                      key={index}
-                      onClick={() => {
-                        setActiveCategory(item.category)
-                        setExpandedFaqs([...expandedFaqs, item.id])
-                      }}
-                      className="text-left p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors flex items-center space-x-2"
-                    >
-                      <ChevronRight className="w-4 h-4 text-gray-400" />
-                      <span className="text-gray-700">{item.question}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-            
             {/* 用户反馈 */}
             {!searchQuery && (
               <div className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6">
@@ -516,6 +584,18 @@ const Help = () => {
           </div>
         </div>
       </div>
+      
+      {/* AI配置模态框 */}
+      <AIConfigModal 
+        isOpen={activeCategory === 'ai-config'}
+        onClose={() => setActiveCategory('getting-started')}
+      />
+
+      {/* MCP配置模态框 */}
+      <MCPConfigPanel 
+        isOpen={activeCategory === 'mcp-config'}
+        onClose={() => setActiveCategory('getting-started')}
+      />
     </motion.div>
   )
 }

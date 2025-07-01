@@ -20,9 +20,13 @@ import {
   Award,
   HelpCircle,
   Lock,
-  LogOut
+  LogOut,
+  Cpu,
+  Database
 } from 'lucide-react'
 import useAuthStore from '../store/authStore'
+import AIConfigModal from '../components/AIConfigModal'
+import MCPConfigPanel from '../components/MCPConfigPanel'
 
 const Layout = ({ children }) => {
   const location = useLocation()
@@ -32,6 +36,8 @@ const Layout = ({ children }) => {
   const [activeGroup, setActiveGroup] = useState(null)
   const [scrollY, setScrollY] = useState(0)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [showAIConfig, setShowAIConfig] = useState(false)
+  const [showMCPConfig, setShowMCPConfig] = useState(false)
 
   // 监听滚动事件
   useEffect(() => {
@@ -297,6 +303,30 @@ const Layout = ({ children }) => {
 
             {/* 用户信息和移动端菜单按钮 */}
             <div className="flex items-center space-x-4">
+              {/* AI配置按钮 */}
+              <motion.button
+                onClick={() => setShowAIConfig(true)}
+                className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 hover:from-blue-500/20 hover:to-purple-500/20 rounded-lg transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                title="AI模型配置"
+              >
+                <Brain className="w-5 h-5 text-purple-600" />
+                <span className="text-sm font-medium text-gray-700">AI配置</span>
+              </motion.button>
+
+              {/* MCP配置按钮 */}
+              <motion.button
+                onClick={() => setShowMCPConfig(true)}
+                className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-gradient-to-r from-green-500/10 to-blue-500/10 hover:from-green-500/20 hover:to-blue-500/20 rounded-lg transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                title="MCP协议配置"
+              >
+                <Cpu className="w-5 h-5 text-blue-600" />
+                <span className="text-sm font-medium text-gray-700">MCP配置</span>
+              </motion.button>
+
               {/* 用户信息 */}
               <motion.div 
                 className="hidden sm:flex items-center space-x-3 px-4 py-2 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20"
@@ -382,6 +412,35 @@ const Layout = ({ children }) => {
                     </div>
                   </div>
                 </motion.div>
+
+                {/* 配置按钮 */}
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  <motion.button
+                    onClick={() => {
+                      setShowAIConfig(true);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="flex flex-col items-center justify-center p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Brain className="w-6 h-6 text-purple-600 mb-1" />
+                    <span className="text-xs font-medium">AI配置</span>
+                  </motion.button>
+                  
+                  <motion.button
+                    onClick={() => {
+                      setShowMCPConfig(true);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="flex flex-col items-center justify-center p-3 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Cpu className="w-6 h-6 text-blue-600 mb-1" />
+                    <span className="text-xs font-medium">MCP配置</span>
+                  </motion.button>
+                </div>
 
                 {/* 移动端导航菜单 */}
                 <nav className="space-y-2">
@@ -497,6 +556,39 @@ const Layout = ({ children }) => {
           onClick={() => setActiveGroup(null)}
         />
       )}
+
+      {/* 浮动配置按钮 (移动端) */}
+      <div className="fixed bottom-6 right-6 flex flex-col space-y-3 lg:hidden z-40">
+        <motion.button
+          onClick={() => setShowAIConfig(true)}
+          className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <Brain className="w-6 h-6 text-white" />
+        </motion.button>
+        
+        <motion.button
+          onClick={() => setShowMCPConfig(true)}
+          className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <Cpu className="w-6 h-6 text-white" />
+        </motion.button>
+      </div>
+
+      {/* AI配置模态框 */}
+      <AIConfigModal 
+        isOpen={showAIConfig}
+        onClose={() => setShowAIConfig(false)}
+      />
+
+      {/* MCP配置模态框 */}
+      <MCPConfigPanel
+        isOpen={showMCPConfig}
+        onClose={() => setShowMCPConfig(false)}
+      />
     </div>
   )
 }

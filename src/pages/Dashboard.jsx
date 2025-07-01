@@ -11,17 +11,21 @@ import {
   Upload,
   Play,
   Settings,
-  Award
+  Award,
+  Brain,
+  Cpu
 } from 'lucide-react'
 import useDataStore from '../store/dataStore'
 import useAuthStore from '../store/authStore'
 import AIConfigModal from '../components/AIConfigModal'
+import MCPConfigPanel from '../components/MCPConfigPanel'
 
 const Dashboard = () => {
   const navigate = useNavigate()
   const { user } = useAuthStore()
   const { statistics, resumes, interviewSessions } = useDataStore()
   const [showAIConfig, setShowAIConfig] = useState(false)
+  const [showMCPConfig, setShowMCPConfig] = useState(false)
   
   const quickActions = [
     {
@@ -96,12 +100,24 @@ const Dashboard = () => {
                   }
                 </p>
               </div>
-              <button
-                onClick={() => setShowAIConfig(true)}
-                className="p-3 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg transition-colors"
-              >
-                <Settings className="w-6 h-6" />
-              </button>
+              <div className="flex space-x-3">
+                <button
+                  onClick={() => setShowAIConfig(true)}
+                  className="p-3 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg transition-colors flex items-center space-x-2"
+                  title="AI模型配置"
+                >
+                  <Brain className="w-5 h-5" />
+                  <span className="hidden sm:inline">AI配置</span>
+                </button>
+                <button
+                  onClick={() => setShowMCPConfig(true)}
+                  className="p-3 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg transition-colors flex items-center space-x-2"
+                  title="MCP协议配置"
+                >
+                  <Cpu className="w-5 h-5" />
+                  <span className="hidden sm:inline">MCP配置</span>
+                </button>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -187,6 +203,72 @@ const Dashboard = () => {
                 </motion.button>
               )
             })}
+          </div>
+        </div>
+        
+        {/* 配置卡片 */}
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">系统配置</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* AI配置卡片 */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                    <Brain className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">AI模型配置</h3>
+                    <p className="text-sm text-gray-500">配置AI模型和API密钥</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setShowAIConfig(true)}
+                  className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+                >
+                  配置
+                </button>
+              </div>
+              <div className="text-sm text-gray-600">
+                <p>支持OpenAI、Claude、Gemini等400+模型</p>
+                <p className="mt-1">配置AI模型可提升分析质量和面试体验</p>
+              </div>
+            </motion.div>
+
+            {/* MCP配置卡片 */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-600 rounded-lg flex items-center justify-center">
+                    <Cpu className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">MCP协议配置</h3>
+                    <p className="text-sm text-gray-500">配置Model Context Protocol</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setShowMCPConfig(true)}
+                  className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors"
+                >
+                  配置
+                </button>
+              </div>
+              <div className="text-sm text-gray-600">
+                <p>增强AI上下文理解和工具调用能力</p>
+                <p className="mt-1">提供更精准的面试评估和职位匹配</p>
+              </div>
+            </motion.div>
           </div>
         </div>
         
@@ -298,6 +380,12 @@ const Dashboard = () => {
       <AIConfigModal 
         isOpen={showAIConfig}
         onClose={() => setShowAIConfig(false)}
+      />
+
+      {/* MCP配置模态框 */}
+      <MCPConfigPanel 
+        isOpen={showMCPConfig}
+        onClose={() => setShowMCPConfig(false)}
       />
     </motion.div>
   )
